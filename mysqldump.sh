@@ -19,8 +19,8 @@ mysqlPort=3306
 remoteHost=localhost
 backupPath="/root/backups/$(date +%Y%m%d)/"
 # Retention times #
-weekly=1
-daily=3
+weekly=4
+daily=31
 ######
 email="root@localhost"
 
