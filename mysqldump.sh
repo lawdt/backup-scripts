@@ -3,6 +3,7 @@
 # Logic Backup MySQL data using MySQL mysqldump tool
 # Daniel Guzman Burgos <daniel.guzman.burgos@percona.com>
 #
+# modified by Dmitry Lavrukhin law.dim.reg@gmail.com
 
 clear
 
@@ -18,19 +19,19 @@ mysqlPort=3306
 remoteHost=localhost
 backupPath="/root/backups/$(date +%Y%m%d)/"
 # Retention times #
-weekly=4
-daily=7
+weekly=0
+daily=3
 ######
 email="root@localhost"
 
 # Function definitions
 
 function sendAlert () {
-        if [ -e "$errorFile" ]
-        then
-                alertMsg=$(cat $errorFile)
-                echo -e "${alertMsg}" | mailx -s "[$HOSTNAME] ALERT MySQLdump backups" "${email}"
-        fi
+#        if [ -e "$errorFile" ]
+#        then
+#                alertMsg=$(cat $errorFile)
+#                echo -e "${alertMsg}" | mailx -s "[$HOSTNAME] ALERT MySQLdump backups" "${email}"
+#        fi
 }
 
 function destructor () {
