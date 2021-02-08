@@ -92,7 +92,7 @@ function runMysqldump () {
 	local schemas=$(mysql -u${mysqlUser} -h${remoteHost} --port=${mysqlPort} -N -e"select schema_name from information_schema.schemata where schema_name not in ('information_schema', 'performance_schema')")
 	if [ ! -z "$schemas" ]; then
 		for i in $schemas; do
-			out=$(mysqldump -u${mysqlUser} -h${remoteHost} --port=${mysqlPort} --single-transaction --master-data=2 --events --routines $i | gzip > $backupPath/${i}.sql.gz 2>&1)
+			out=$(mysqldump -u${mysqlUser} -h${remoteHost} --port=${mysqlPort} --single-transaction --events --routines $i | gzip > $backupPath/${i}.sql.gz 2>&1)
 			verifyExecution "$?" "Problems dumping db $i. $out"
 			logInfo "[OK] Dumping $i"
 		done
