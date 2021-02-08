@@ -19,7 +19,7 @@ mysqlPort=3306
 remoteHost=localhost
 backupPath="/root/backups/$(date +%Y%m%d)/"
 # Retention times #
-weekly=0
+weekly=1
 daily=3
 ######
 email="root@localhost"
@@ -27,11 +27,11 @@ email="root@localhost"
 # Function definitions
 
 function sendAlert () {
-#        if [ -e "$errorFile" ]
-#        then
-#                alertMsg=$(cat $errorFile)
+        if [ -e "$errorFile" ]
+        then
+                alertMsg=$(cat $errorFile)
 #                echo -e "${alertMsg}" | mailx -s "[$HOSTNAME] ALERT MySQLdump backups" "${email}"
-#        fi
+        fi
 }
 
 function destructor () {
